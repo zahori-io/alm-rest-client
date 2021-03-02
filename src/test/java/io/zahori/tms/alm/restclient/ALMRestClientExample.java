@@ -39,18 +39,50 @@ import io.zahori.model.TestSet;
 import io.zahori.tms.alm.restclient.ALMRestClient.EntityType;
 import io.zahori.tms.alm.restclient.ALMRestClient.Protocol;
 
+/**
+ * The type Alm rest client example.
+ */
 public class ALMRestClientExample {
 
-    // SET YOUR DATA HERE !!!
+    /**
+     * The constant HOST.
+     */
+// SET YOUR DATA HERE !!!
     private static final String HOST = "alm_host";
+    /**
+     * The constant PORT.
+     */
     private static final String PORT = "80";
+    /**
+     * The constant DOMAIN.
+     */
     private static final String DOMAIN = "MY_DOMAIN";
+    /**
+     * The constant PROJECT.
+     */
     private static final String PROJECT = "MY_PROJECT";
+    /**
+     * The constant USERNAME.
+     */
     private static final String USERNAME = "MY_USER";
+    /**
+     * The constant PASSWORD.
+     */
     private static final String PASSWORD = "MY_PASSWORD";
+    /**
+     * The constant testSetId.
+     */
     private static String testSetId = "5201";
+    /**
+     * The constant testId.
+     */
     private static String testId = "1181";
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
 
         ALMRestClient alm = new ALMRestClient(Protocol.http, HOST, PORT, DOMAIN, PROJECT);

@@ -23,14 +23,30 @@ package io.zahori.tms.alm.restclient.infrastructure;
  * #L%
  */
 
+/**
+ * The type Assert.
+ */
 public class Assert {
 
+	/**
+	 * Assert true.
+	 *
+	 * @param errorMessage the error message
+	 * @param assertee     the assertee
+	 */
 	public static final void assertTrue(final String errorMessage, boolean assertee) {
 		if (!assertee) {
 			throw new RuntimeException(errorMessage);
 		}
 	}
 
+	/**
+	 * Assert equals.
+	 *
+	 * @param errorMessage  the error message
+	 * @param expressionOne the expression one
+	 * @param expressionTwo the expression two
+	 */
 	public static final void assertEquals(final String errorMessage, final String expressionOne,
 			final String expressionTwo) {
 		if (!expressionOne.equals(expressionTwo)) {
@@ -38,18 +54,37 @@ public class Assert {
 		}
 	}
 
+	/**
+	 * Assert equals.
+	 *
+	 * @param errorMessage  the error message
+	 * @param expressionOne the expression one
+	 * @param expressionTwo the expression two
+	 */
 	public static void assertEquals(String errorMessage, int expressionOne, int expressionTwo) {
 		if (expressionOne != expressionTwo) {
 			throw new RuntimeException(errorMessage);
 		}
 	}
 
+	/**
+	 * Assert null.
+	 *
+	 * @param errorMessage the error message
+	 * @param assertee     the assertee
+	 */
 	public static void assertNull(String errorMessage, String assertee) {
 		if (assertee != null) {
 			throw new RuntimeException(errorMessage);
 		}
 	}
 
+	/**
+	 * Assert not null.
+	 *
+	 * @param errorMessage the error message
+	 * @param assertee     the assertee
+	 */
 	public static void assertNotNull(String errorMessage, String assertee) {
 		if (assertee == null) {
 			throw new RuntimeException(errorMessage);

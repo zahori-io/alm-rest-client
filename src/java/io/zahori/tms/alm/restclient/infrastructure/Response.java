@@ -26,17 +26,35 @@ package io.zahori.tms.alm.restclient.infrastructure;
 import java.util.Map;
 
 /**
- * This is a naive implementation of an HTTP response. We use it to simplify
- * matters in the examples. It is nothing more than a container of the response
- * headers and the response body.
+ * The type Response.
  */
 public class Response {
 
+	/**
+	 * The Response headers.
+	 */
 	private Map<String, ? extends Iterable<String>> responseHeaders = null;
+	/**
+	 * The Response data.
+	 */
 	private byte[] responseData = null;
+	/**
+	 * The Failure.
+	 */
 	private Exception failure = null;
+	/**
+	 * The Status code.
+	 */
 	private int statusCode = 0;
 
+	/**
+	 * Instantiates a new Response.
+	 *
+	 * @param responseHeaders the response headers
+	 * @param responseData    the response data
+	 * @param failure         the failure
+	 * @param statusCode      the status code
+	 */
 	public Response(Map<String, Iterable<String>> responseHeaders, byte[] responseData, Exception failure,
 			int statusCode) {
 		super();
@@ -46,73 +64,88 @@ public class Response {
 		this.statusCode = statusCode;
 	}
 
+	/**
+	 * Instantiates a new Response.
+	 */
 	public Response() {
 	}
 
 	/**
-	 * @return the responseHeaders
+	 * Gets response headers.
+	 *
+	 * @return the response headers
 	 */
 	public Map<String, ? extends Iterable<String>> getResponseHeaders() {
 		return responseHeaders;
 	}
 
 	/**
-	 * @param responseHeaders
-	 *            the responseHeaders to set
+	 * Sets response headers.
+	 *
+	 * @param responseHeaders the response headers
 	 */
 	public void setResponseHeaders(Map<String, ? extends Iterable<String>> responseHeaders) {
 		this.responseHeaders = responseHeaders;
 	}
 
 	/**
-	 * @return the responseData
+	 * Get response data byte [ ].
+	 *
+	 * @return the byte [ ]
 	 */
 	public byte[] getResponseData() {
 		return responseData;
 	}
 
 	/**
-	 * @param responseData
-	 *            the responseData to set
+	 * Sets response data.
+	 *
+	 * @param responseData the response data
 	 */
 	public void setResponseData(byte[] responseData) {
 		this.responseData = responseData;
 	}
 
 	/**
-	 * @return the failure if the access to the requested URL failed, such as a
-	 *         404 or 500. If no such failure occured this method returns null.
+	 * Gets failure.
+	 *
+	 * @return the failure
 	 */
 	public Exception getFailure() {
 		return failure;
 	}
 
 	/**
-	 * @param failure
-	 *            the failure to set
+	 * Sets failure.
+	 *
+	 * @param failure the failure
 	 */
 	public void setFailure(Exception failure) {
 		this.failure = failure;
 	}
 
 	/**
-	 * @return the statusCode
+	 * Gets status code.
+	 *
+	 * @return the status code
 	 */
 	public int getStatusCode() {
 		return statusCode;
 	}
 
 	/**
-	 * @param statusCode
-	 *            the statusCode to set
+	 * Sets status code.
+	 *
+	 * @param statusCode the status code
 	 */
 	public void setStatusCode(int statusCode) {
 		this.statusCode = statusCode;
 	}
 
 	/**
-	 * @see Object#toString() return the contents of the byte[] data as a
-	 *      string.
+	 * To string string.
+	 *
+	 * @return the string
 	 */
 	@Override
 	public String toString() {

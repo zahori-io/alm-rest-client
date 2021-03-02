@@ -35,24 +35,36 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 /**
- * This class keeps the state of the connection for the examples. This class is
- * a thus sharing state singleton. All examples get the instance in their
- * default constructors - (cookies, server url).
- *
- * Some simple methods are implemented to get commonly used paths.
- *
+ * The type Rest connector.
  */
 public class RestConnector {
 
+	/**
+	 * The Cookies.
+	 */
 	protected Map<String, String> cookies;
 	/**
-	 * This is the URL to the ALM application. For example:
-	 * http://myhost:8080/qcbin. Make sure that there is no slash at the end.
+	 * The Server url.
 	 */
 	protected String serverUrl;
+	/**
+	 * The Domain.
+	 */
 	protected String domain;
+	/**
+	 * The Project.
+	 */
 	protected String project;
 
+	/**
+	 * Init rest connector.
+	 *
+	 * @param cookies   the cookies
+	 * @param serverUrl the server url
+	 * @param domain    the domain
+	 * @param project   the project
+	 * @return the rest connector
+	 */
 	public RestConnector init(Map<String, String> cookies, String serverUrl, String domain, String project) {
 
 		this.cookies = cookies;
@@ -63,23 +75,41 @@ public class RestConnector {
 		return this;
 	}
 
+	/**
+	 * Instantiates a new Rest connector.
+	 */
 	private RestConnector() {
 	}
 
+	/**
+	 * The constant instance.
+	 */
 	private static RestConnector instance = new RestConnector();
 
+	/**
+	 * Gets instance.
+	 *
+	 * @return the instance
+	 */
 	public static RestConnector getInstance() {
 		return instance;
 	}
 
+	/**
+	 * Build entity collection url string.
+	 *
+	 * @param entityType the entity type
+	 * @return the string
+	 */
 	public String buildEntityCollectionUrl(String entityType) {
 		return buildUrl("rest/domains/" + domain + "/projects/" + project + "/" + entityType + "s");
 	}
 
 	/**
-	 * @param path
-	 *            on the server to use
-	 * @return a url on the server for the path parameter
+	 * Build url string.
+	 *
+	 * @param path the path
+	 * @return the string
 	 */
 	public String buildUrl(String path) {
 
@@ -87,6 +117,8 @@ public class RestConnector {
 	}
 
 	/**
+	 * Gets cookies.
+	 *
 	 * @return the cookies
 	 */
 	public Map<String, String> getCookies() {
@@ -94,47 +126,80 @@ public class RestConnector {
 	}
 
 	/**
-	 * @param cookies
-	 *            the cookies to set
+	 * Sets cookies.
+	 *
+	 * @param cookies the cookies
 	 */
 	public void setCookies(Map<String, String> cookies) {
 		this.cookies = cookies;
 	}
 
+	/**
+	 * Http put response.
+	 *
+	 * @param url     the url
+	 * @param data    the data
+	 * @param headers the headers
+	 * @return the response
+	 * @throws Exception the exception
+	 */
 	public Response httpPut(String url, byte[] data, Map<String, String> headers) throws Exception {
 
 		return doHttp("PUT", url, null, data, headers, cookies);
 	}
 
+	/**
+	 * Http post response.
+	 *
+	 * @param url     the url
+	 * @param data    the data
+	 * @param headers the headers
+	 * @return the response
+	 * @throws Exception the exception
+	 */
 	public Response httpPost(String url, byte[] data, Map<String, String> headers) throws Exception {
 
 		return doHttp("POST", url, null, data, headers, cookies);
 	}
 
+	/**
+	 * Http delete response.
+	 *
+	 * @param url     the url
+	 * @param headers the headers
+	 * @return the response
+	 * @throws Exception the exception
+	 */
 	public Response httpDelete(String url, Map<String, String> headers) throws Exception {
 
 		return doHttp("DELETE", url, null, null, headers, cookies);
 	}
 
+	/**
+	 * Http get response.
+	 *
+	 * @param url         the url
+	 * @param queryString the query string
+	 * @param headers     the headers
+	 * @return the response
+	 * @throws Exception the exception
+	 */
 	public Response httpGet(String url, String queryString, Map<String, String> headers) throws Exception {
 
 		return doHttp("GET", url, queryString, null, headers, cookies);
 	}
 
 	/**
-	 * @param type
-	 *            http operation: get post put delete
-	 * @param url
-	 *            to work on
-	 * @param queryString
-	 * @param data
-	 *            to write, if a writable operation
-	 * @param headers
-	 *            to use in the request
-	 * @param cookies
-	 *            to use in the request and update from the response
-	 * @return http response
-	 * @throws Exception
+	 * Do http response.
+	 *
+	 * @param type        the type
+	 * @param url         the url
+	 * @param queryString the query string
+	 * @param data        the data
+	 * @param headers     the headers
+	 * @param cookies     the cookies
+	 * @return the response
+	 * @throws Exception the exception
 	 */
 	private Response doHttp(String type, String url, String queryString, byte[] data, Map<String, String> headers,
 			Map<String, String> cookies) throws Exception {
@@ -159,16 +224,13 @@ public class RestConnector {
 	}
 
 	/**
-	 * @param con
-	 *            connection to set the headers and bytes in
-	 * @param headers
-	 *            to use in the request, such as content-type
-	 * @param bytes
-	 *            the actual data to post in the connection.
-	 * @param cookieString
-	 *            the cookies data from clientside, such as lwsso, qcsession,
-	 *            jsession etc.
-	 * @throws java.io.IOException
+	 * Prepare http request.
+	 *
+	 * @param con          the con
+	 * @param headers      the headers
+	 * @param bytes        the bytes
+	 * @param cookieString the cookie string
+	 * @throws IOException the io exception
 	 */
 	private void prepareHttpRequest(HttpURLConnection con, Map<String, String> headers, byte[] bytes,
 			String cookieString) throws IOException {
@@ -217,12 +279,11 @@ public class RestConnector {
 	}
 
 	/**
-	 * @param con
-	 *            that is already connected to its url with an http request, and
-	 *            that should contain a response for us to retrieve
-	 * @return a response from the server to the previously submitted http
-	 *         request
-	 * @throws Exception
+	 * Retrieve html response response.
+	 *
+	 * @param con the con
+	 * @return the response
+	 * @throws Exception the exception
 	 */
 	private Response retrieveHtmlResponse(HttpURLConnection con) throws Exception {
 
@@ -263,6 +324,11 @@ public class RestConnector {
 		return ret;
 	}
 
+	/**
+	 * Update cookies.
+	 *
+	 * @param response the response
+	 */
 	private void updateCookies(Response response) {
 
 		Iterable<String> newCookies = response.getResponseHeaders().get("Set-Cookie");
@@ -280,6 +346,11 @@ public class RestConnector {
 		}
 	}
 
+	/**
+	 * Gets cookie string.
+	 *
+	 * @return the cookie string
+	 */
 	public String getCookieString() {
 
 		StringBuilder sb = new StringBuilder();

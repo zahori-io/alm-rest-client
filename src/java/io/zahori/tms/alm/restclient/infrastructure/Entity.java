@@ -62,66 +62,69 @@ import javax.xml.bind.annotation.XmlType;
 import io.zahori.tms.alm.restclient.infrastructure.Entity.Fields.Field;
 
 /**
- * Java class for anonymous complex type.
- *
- * The following schema fragment specifies the expected content contained within
- * this class.
- *
- * <complexType> <complexContent>
- * <restriction base= "{http://www.w3.org/2001/XMLSchema}anyType"> <sequence>
- * <element name= "Fields"> <complexType> <complexContent>
- * <restriction base= "{http://www.w3.org/2001/XMLSchema}anyType"> <sequence>
- * <element name="Field" maxOccurs="unbounded"> <complexType> <complexContent>
- * <restriction base= "{http://www.w3.org/2001/XMLSchema}anyType"> <sequence>
- * <element name="Value" type="{http://www.w3.org/2001/XMLSchema}string"
- * maxOccurs="unbounded"/> </sequence>
- * <attribute name="Name" use="required" type=
- * "{http://www.w3.org/2001/XMLSchema}string" /> </restriction>
- * </complexContent> </complexType> </element> </sequence> </restriction>
- * </complexContent> </complexType> </element> </sequence>
- * <attribute name="Type" use="required" type=
- * "{http://www.w3.org/2001/XMLSchema}string" /> </restriction>
- * </complexContent> </complexType>
- *
- *
+ * The type Entity.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = { "fields" })
 @XmlRootElement(name = "Entity")
 public class Entity {
 
+	/**
+	 * The Fields.
+	 */
 	@XmlElement(name = "Fields", required = true)
 	protected Entity.Fields fields;
+	/**
+	 * The Type.
+	 */
 	@XmlAttribute(name = "Type", required = true)
 	protected String type;
 
+	/**
+	 * Instantiates a new Entity.
+	 *
+	 * @param entity the entity
+	 */
 	public Entity(Entity entity) {
 		type = entity.getType();
 		fields = new Entity.Fields();
 
 	}
 
+	/**
+	 * Instantiates a new Entity.
+	 *
+	 * @param type the type
+	 */
 	public Entity(String type) {
 		this.type = type;
 		fields = new Entity.Fields();
 
 	}
 
+	/**
+	 * Instantiates a new Entity.
+	 */
 	public Entity() {
 		fields = new Entity.Fields();
 
 	}
 
+	/**
+	 * To string string.
+	 *
+	 * @return the string
+	 */
 	@Override
 	public String toString() {
 		return "Entity: " + fields;
 	}
 
 	/**
-	 * Get the value of a determined field
+	 * Gets field.
 	 *
-	 * @param name
-	 * @return
+	 * @param name the name
+	 * @return the field
 	 */
 	public String getField(String name) {
 		for (final Field field : fields.getField()) {
@@ -132,113 +135,104 @@ public class Entity {
 	}
 
 	/**
-	 * Gets the value of the fields property.
+	 * Gets fields.
 	 *
-	 * @return possible object is {@link Entity.Fields }
-	 *
+	 * @return the fields
 	 */
 	public Entity.Fields getFields() {
 		return fields;
 	}
 
 	/**
-	 * Sets the value of the fields property.
+	 * Sets fields.
 	 *
-	 * @param value
-	 *            allowed object is {@link Entity.Fields }
-	 *
+	 * @param value the value
 	 */
 	public void setFields(Entity.Fields value) {
 		this.fields = value;
 	}
 
+	/**
+	 * Add field.
+	 *
+	 * @param name  the name
+	 * @param value the value
+	 */
 	public void addField(String name, String value) {
 		this.fields.setField(name, value);
 	}
 
+	/**
+	 * Add field.
+	 *
+	 * @param name   the name
+	 * @param values the values
+	 */
 	public void addField(String name, String... values) {
 		this.fields.setField(name, values);
 	}
 
 	/**
-	 * Gets the value of the type property.
+	 * Gets type.
 	 *
-	 * @return possible object is {@link String }
-	 *
+	 * @return the type
 	 */
 	public String getType() {
 		return type;
 	}
 
 	/**
-	 * Sets the value of the type property.
+	 * Sets type.
 	 *
-	 * @param value
-	 *            allowed object is {@link String }
-	 *
+	 * @param value the value
 	 */
 	public void setType(String value) {
 		this.type = value;
 	}
 
 	/**
-	 * Java class for anonymous complex type.
-	 *
-	 * The following schema fragment specifies the expected content contained
-	 * within this class.
-	 *
-	 * <complexType> <complexContent>
-	 * <restriction base= "{http://www.w3.org/2001/XMLSchema}anyType">
-	 * <sequence> <element name= "Field" maxOccurs="unbounded"> <complexType>
-	 * <complexContent>
-	 * <restriction base= "{http://www.w3.org/2001/XMLSchema}anyType">
-	 * <sequence>
-	 * <element name="Value" type= "{http://www.w3.org/2001/XMLSchema}string"
-	 * maxOccurs="unbounded"/> </sequence>
-	 * <attribute name="Name" use="required" type=
-	 * "{http://www.w3.org/2001/XMLSchema}string" /> </restriction>
-	 * </complexContent> </complexType> </element> </sequence> </restriction>
-	 * </complexContent> </complexType>
-	 *
-	 *
+	 * The type Fields.
 	 */
 	@XmlAccessorType(XmlAccessType.FIELD)
 	@XmlType(name = "", propOrder = { "field" })
 	public static class Fields {
 
+		/**
+		 * The Field.
+		 */
 		@XmlElement(name = "Field", required = true)
 		protected List<Field> field;
 
+		/**
+		 * Instantiates a new Fields.
+		 *
+		 * @param fields the fields
+		 */
 		public Fields(Fields fields) {
 			field = new ArrayList<Field>(fields.getField());
 		}
 
+		/**
+		 * Instantiates a new Fields.
+		 */
 		public Fields() {
 			field = new ArrayList<Field>();
 		}
 
+		/**
+		 * To string string.
+		 *
+		 * @return the string
+		 */
 		@Override
 		public String toString() {
 			return field.toString();
 		}
 
 		/**
-		 * Gets the value of the field property.
+		 * Gets field.
 		 *
-		 *
-		 * This accessor method returns a reference to the live list, not a
-		 * snapshot. Therefore any modification you make to the returned list
-		 * will be present inside the JAXB object. This is why there is no set
-		 * method for the field property.
-		 *
-		 * For example, to add a new item, do as follows:
-		 *
-		 * getField().add(newItem);
-		 *
-		 * Objects of the following type(s) are allowed in the list
-		 * {@link Entity.Fields.Field }
-		 *
-		 *
+		 * @return the field
 		 */
 		public List<Field> getField() {
 			if (field == null) {
@@ -247,74 +241,87 @@ public class Entity {
 			return this.field;
 		}
 
+		/**
+		 * Sets field.
+		 *
+		 * @param name  the name
+		 * @param value the value
+		 */
 		public void setField(String name, String value) {
 			field.add(new Field(name, value));
 		}
 
+		/**
+		 * Sets field.
+		 *
+		 * @param name   the name
+		 * @param values the values
+		 */
 		public void setField(String name, String... values) {
 			field.add(new Field(name, values));
 		}
 
 		/**
-		 * Java class for anonymous complex type.
-		 *
-		 * The following schema fragment specifies the expected content
-		 * contained within this class.
-		 *
-		 * <complexType> <complexContent>
-		 * <restriction base= "{http://www.w3.org/2001/XMLSchema}anyType">
-		 * <sequence> <element name ="Value" type=
-		 * "{http://www.w3.org/2001/XMLSchema}string" maxOccurs= "unbounded"/>
-		 * </sequence> <attribute name="Name" use="required" type=
-		 * "{http://www.w3.org/2001/XMLSchema}string" /> </restriction>
-		 * </complexContent> </complexType>
-		 *
+		 * The type Field.
 		 */
 		@XmlAccessorType(XmlAccessType.FIELD)
 		@XmlType(name = "", propOrder = { "value" })
 		public static class Field {
 
+			/**
+			 * The Value.
+			 */
 			@XmlElement(name = "Value", required = true)
 			protected List<String> value;
+			/**
+			 * The Name.
+			 */
 			@XmlAttribute(name = "Name", required = true)
 			protected String name;
 
+			/**
+			 * Instantiates a new Field.
+			 */
 			public Field() {
 			}
 
+			/**
+			 * Instantiates a new Field.
+			 *
+			 * @param name  the name
+			 * @param value the value
+			 */
 			public Field(String name, String value) {
 				this.name = name;
 				this.value = new ArrayList<String>();
 				this.value.add(value);
 			}
 
+			/**
+			 * Instantiates a new Field.
+			 *
+			 * @param name   the name
+			 * @param values the values
+			 */
 			public Field(String name, String... values) {
 				this.name = name;
 				this.value = new ArrayList<String>(Arrays.asList(values));
 			}
 
+			/**
+			 * To string string.
+			 *
+			 * @return the string
+			 */
 			@Override
 			public String toString() {
 				return name + "=" + value;
 			}
 
 			/**
-			 * Gets the value of the value property.
+			 * Gets value.
 			 *
-			 * This accessor method returns a reference to the live list, not a
-			 * snapshot. Therefore, any modification you make to the returned
-			 * list will be present inside the JAXB object. This is why there is
-			 * no set method for the value property.
-			 *
-			 * For example, to add a new item, do as follows:
-			 *
-			 * getValue().add(newItem);
-			 *
-			 *
-			 * Objects of the following type(s) are allowed in the list
-			 * {@link String }
-			 *
-			 *
+			 * @return the value
 			 */
 			public List<String> getValue() {
 				if (value == null) {
@@ -324,21 +331,18 @@ public class Entity {
 			}
 
 			/**
-			 * Gets the value of the name property.
+			 * Gets name.
 			 *
-			 * @return possible object is {@link String }
-			 *
+			 * @return the name
 			 */
 			public String getName() {
 				return name;
 			}
 
 			/**
-			 * Sets the value of the name property.
+			 * Sets name.
 			 *
-			 * @param value
-			 *            allowed object is {@link String }
-			 *
+			 * @param value the value
 			 */
 			public void setName(String value) {
 				this.name = value;

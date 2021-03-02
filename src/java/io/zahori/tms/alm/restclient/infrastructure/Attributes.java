@@ -42,44 +42,23 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * 
- * Java class for anonymous complex type.
- *
- * 
- * The following schema fragment specifies the expected content contained within
- * this class.
- *
- * <complexType> <complexContent> <restriction base=
- * "{http://www.w3.org/2001/XMLSchema}anyType"> <sequence> <element ref=
- * "{}Attribute" maxOccurs="unbounded" minOccurs="0"/> </sequence>
- * </restriction> </complexContent> </complexType>
- *
- *
+ * The type Attributes.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = { "attribute" })
 @XmlRootElement(name = "Attributes")
 public class Attributes {
 
+	/**
+	 * The Attribute.
+	 */
 	@XmlElement(name = "Attribute")
 	protected List<Attribute> attribute;
 
 	/**
-	 * Gets the value of the attribute property.
+	 * Gets attribute.
 	 *
-	 * This accessor method returns a reference to the live list, not a
-	 * snapshot. Therefore any modification you make to the returned list will
-	 * be present inside the JAXB object. This is why there is not a
-	 * <CODE>set</CODE> method for the attribute property.
-	 *
-	 * For example, to add a new item, do as follows:
-	 *
-	 * getAttribute().add(newItem);
-	 *
-	 * Objects of the following type(s) are allowed in the list
-	 * {@link Attribute }
-	 *
-	 *
+	 * @return the attribute
 	 */
 	public List<Attribute> getAttribute() {
 		if (attribute == null) {

@@ -23,11 +23,20 @@ package io.zahori.tms.alm.restclient.infrastructure;
  * #L%
  */
 
+/**
+ * The type Base 64 encoder.
+ */
 public class Base64Encoder {
 
+	/**
+	 * The Alphabet.
+	 */
 	private final static char[] ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
 			.toCharArray();
 
+	/**
+	 * The constant toInt.
+	 */
 	private static int[] toInt = new int[128];
 
 	static {
@@ -37,11 +46,10 @@ public class Base64Encoder {
 	}
 
 	/**
-	 * Translates the specified byte array into Base64 string.
+	 * Encode string.
 	 *
-	 * @param buf
-	 *            the byte array (not null)
-	 * @return the translated Base64 string (not null)
+	 * @param buf the buf
+	 * @return the string
 	 */
 	public static String encode(byte[] buf) {
 		int size = buf.length;

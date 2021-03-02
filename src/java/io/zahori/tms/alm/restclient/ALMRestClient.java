@@ -45,31 +45,62 @@ import io.zahori.tms.alm.http.Http;
 import io.zahori.tms.alm.restclient.infrastructure.Entities;
 import io.zahori.tms.alm.restclient.infrastructure.Entity;
 
+/**
+ * The type Alm rest client.
+ */
 public class ALMRestClient {
 
+    /**
+     * The Url.
+     */
     private final String url;
+    /**
+     * The Base url.
+     */
     private final String baseUrl;
 
+    /**
+     * The Username.
+     */
     private String username;
 
+    /**
+     * The Http.
+     */
     private Http http = new Http();
 
+    /**
+     * Instantiates a new Alm rest client.
+     *
+     * @param protocol the protocol
+     * @param host     the host
+     * @param port     the port
+     * @param domain   the domain
+     * @param project  the project
+     */
     public ALMRestClient(Protocol protocol, String host, String port, String domain, String project) {
         this.url = protocol + "://" + host + ":" + port + "/qcbin/";
         this.baseUrl = url + "rest/domains/" + domain + "/projects/" + project + "/";
     }
 
     /**
-     * 
-     * @param url     example: http://host:port/qcbin/
-     * @param domain
-     * @param project
+     * Instantiates a new Alm rest client.
+     *
+     * @param url     the url
+     * @param domain  the domain
+     * @param project the project
      */
     public ALMRestClient(String url, String domain, String project) {
         this.url = url;
         this.baseUrl = url + "rest/domains/" + domain + "/projects/" + project + "/";
     }
 
+    /**
+     * Login with form.
+     *
+     * @param username the username
+     * @param password the password
+     */
     public void loginWithForm(String username, String password) {
         this.username = username;
 
@@ -77,6 +108,12 @@ public class ALMRestClient {
         http.loginWithForm(auth_url, "j_username", username, "j_password", password);
     }
 
+    /**
+     * Login with basic auth.
+     *
+     * @param username the username
+     * @param password the password
+     */
     public void loginWithBasicAuth(String username, String password) {
         this.username = username;
 
@@ -84,6 +121,12 @@ public class ALMRestClient {
         http.loginWithBasicAuth(auth_url, username, password);
     }
 
+    /**
+     * Gets test set.
+     *
+     * @param testSetId the test set id
+     * @return the test set
+     */
     public TestSet getTestSet(String testSetId) {
 
         /* REQUEST */
@@ -99,6 +142,12 @@ public class ALMRestClient {
         return testSet;
     }
 
+    /**
+     * Gets test.
+     *
+     * @param testCaseId the test case id
+     * @return the test
+     */
     public TestCase getTest(String testCaseId) {
 
         /* REQUEST */
@@ -114,6 +163,13 @@ public class ALMRestClient {
         return test;
     }
 
+    /**
+     * Gets test instance.
+     *
+     * @param testSetId the test set id
+     * @param testId    the test id
+     * @return the test instance
+     */
     public TestInstance getTestInstance(String testSetId, String testId) {
 
         /* REQUEST */
@@ -138,6 +194,12 @@ public class ALMRestClient {
         return testInstance;
     }
 
+    /**
+     * Gets run.
+     *
+     * @param runId the run id
+     * @return the run
+     */
     public Run getRun(String runId) {
 
         /* REQUEST */
@@ -170,6 +232,12 @@ public class ALMRestClient {
         return run;
     }
 
+    /**
+     * Gets run steps.
+     *
+     * @param runId the run id
+     * @return the run steps
+     */
     public List<Step> getRunSteps(String runId) {
 
         /* REQUEST */
@@ -203,6 +271,13 @@ public class ALMRestClient {
         return runSteps;
     }
 
+    /**
+     * Gets entity attachments.
+     *
+     * @param entityType the entity type
+     * @param entityId   the entity id
+     * @return the entity attachments
+     */
     private List<File> getEntityAttachments(EntityType entityType, String entityId) {
 
         /* REQUEST */
@@ -230,26 +305,64 @@ public class ALMRestClient {
         return files;
     }
 
+    /**
+     * Gets run attachments.
+     *
+     * @param runId the run id
+     * @return the run attachments
+     */
     public List<File> getRunAttachments(String runId) {
         return getEntityAttachments(EntityType.RUNS, runId);
     }
 
+    /**
+     * Gets run step attachments.
+     *
+     * @param runStepId the run step id
+     * @return the run step attachments
+     */
     public List<File> getRunStepAttachments(String runStepId) {
         return getEntityAttachments(EntityType.RUN_STEPS, runStepId);
     }
 
+    /**
+     * Gets test attachments.
+     *
+     * @param testId the test id
+     * @return the test attachments
+     */
     public List<File> getTestAttachments(String testId) {
         return getEntityAttachments(EntityType.TESTS, testId);
     }
 
+    /**
+     * Gets test set attachments.
+     *
+     * @param testSetId the test set id
+     * @return the test set attachments
+     */
     public List<File> getTestSetAttachments(String testSetId) {
         return getEntityAttachments(EntityType.TEST_SETS, testSetId);
     }
 
+    /**
+     * Gets test instance attachments.
+     *
+     * @param testInstanceId the test instance id
+     * @return the test instance attachments
+     */
     public List<File> getTestInstanceAttachments(String testInstanceId) {
         return getEntityAttachments(EntityType.TEST_INSTANCES, testInstanceId);
     }
 
+    /**
+     * Create run run.
+     *
+     * @param run       the run
+     * @param testSetId the test set id
+     * @param testId    the test id
+     * @return the run
+     */
     public Run createRun(Run run, String testSetId, String testId) {
         if (run == null) {
             return null;
@@ -260,6 +373,12 @@ public class ALMRestClient {
         return createRun(run);
     }
 
+    /**
+     * Create run run.
+     *
+     * @param run the run
+     * @return the run
+     */
     public Run createRun(Run run) {
 
         TestInstance testInstance = getTestInstance(run.getTestSetId(), run.getTestId());
@@ -321,6 +440,19 @@ public class ALMRestClient {
         return run;
     }
 
+    /**
+     * Create run step step.
+     *
+     * @param runId         the run id
+     * @param name          the name
+     * @param status        the status
+     * @param description   the description
+     * @param expected      the expected
+     * @param actual        the actual
+     * @param executionTime the execution time
+     * @param attachments   the attachments
+     * @return the step
+     */
     public Step createRunStep(String runId, String name, String status, String description, String expected, String actual, String executionTime,
             List<File> attachments) {
 
@@ -332,6 +464,13 @@ public class ALMRestClient {
         return createRunStep(runId, runStep);
     }
 
+    /**
+     * Create run step step.
+     *
+     * @param runId   the run id
+     * @param runStep the run step
+     * @return the step
+     */
     public Step createRunStep(String runId, Step runStep) {
 
         /* REQUEST */
@@ -365,6 +504,20 @@ public class ALMRestClient {
         return runStep;
     }
 
+    /**
+     * Create defect defect.
+     *
+     * @param title        the title
+     * @param description  the description
+     * @param detectedBy   the detected by
+     * @param assignedTo   the assigned to
+     * @param status       the status
+     * @param severity     the severity
+     * @param priority     the priority
+     * @param customFields the custom fields
+     * @param attachments  the attachments
+     * @return the defect
+     */
     public Defect createDefect(String title, String description, String detectedBy, String assignedTo, String status, String severity, String priority,
             Map<String, String> customFields, List<File> attachments) {
 
@@ -372,6 +525,12 @@ public class ALMRestClient {
         return createDefect(defect);
     }
 
+    /**
+     * Create defect defect.
+     *
+     * @param defect the defect
+     * @return the defect
+     */
     public Defect createDefect(Defect defect) {
 
         /* REQUEST */
@@ -417,6 +576,13 @@ public class ALMRestClient {
         return defect;
     }
 
+    /**
+     * Create attachment.
+     *
+     * @param entityType the entity type
+     * @param entityId   the entity id
+     * @param file       the file
+     */
     public void createAttachment(EntityType entityType, String entityId, File file) {
         try {
             /* REQUEST */
@@ -438,19 +604,68 @@ public class ALMRestClient {
         }
     }
 
+    /**
+     * The enum Protocol.
+     */
     public enum Protocol {
-        http, https;
+        /**
+         * Http protocol.
+         */
+        http,
+        /**
+         * Https protocol.
+         */
+        https;
     }
 
+    /**
+     * The enum Entity type.
+     */
     public enum EntityType {
-        TEST_SETS("test-sets"), TESTS("tests"), TEST_INSTANCES("test-instances"), RUNS("runs"), RUN_STEPS("run-steps"), DEFECTS("defects");
+        /**
+         * Test sets entity type.
+         */
+        TEST_SETS("test-sets"),
+        /**
+         * Tests entity type.
+         */
+        TESTS("tests"),
+        /**
+         * Test instances entity type.
+         */
+        TEST_INSTANCES("test-instances"),
+        /**
+         * Runs entity type.
+         */
+        RUNS("runs"),
+        /**
+         * Run steps entity type.
+         */
+        RUN_STEPS("run-steps"),
+        /**
+         * Defects entity type.
+         */
+        DEFECTS("defects");
 
+        /**
+         * The Value.
+         */
         private String value;
 
+        /**
+         * Instantiates a new Entity type.
+         *
+         * @param value the value
+         */
         private EntityType(String value) {
             this.value = value;
         }
 
+        /**
+         * Gets value.
+         *
+         * @return the value
+         */
         public String getValue() {
             return this.value;
         }

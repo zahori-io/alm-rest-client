@@ -44,6 +44,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.XmlValue;
 
+/**
+ * The type Entity descriptor.
+ */
 @XmlRootElement(name = "EntityResourceDescriptor")
 @XmlType(name = "", propOrder = { "table", "name", "label", "supportsHistory", "supportsAttachment", "supportsLock",
 		"supportsGrouping", "supportsMailing", "supportsStorage", "supportsMultiValue", "supportsWorkflow",
@@ -51,47 +54,138 @@ import javax.xml.bind.annotation.XmlValue;
 		"attributes", "firstLevelResource", "secondLevelResources" })
 public final class EntityDescriptor {
 
+	/**
+	 * The Base url.
+	 */
 	private String baseUrl;
+	/**
+	 * The Collection name.
+	 */
 	private String collectionName;
+	/**
+	 * The Attributes.
+	 */
 	private Collection<AttributeElement> attributes;
+	/**
+	 * The Extension name.
+	 */
 	private String extensionName;
+	/**
+	 * The Is first level resource.
+	 */
 	private IsFirstLevelResourceElement isFirstLevelResource;
+	/**
+	 * The Label.
+	 */
 	private String label;
+	/**
+	 * The Name.
+	 */
 	private String name;
+	/**
+	 * The Is site entity.
+	 */
 	private Boolean isSiteEntity;
+	/**
+	 * The Supports attachment.
+	 */
 	private BooleanWithURLType supportsAttachment;
+	/**
+	 * The Supports data hiding filter.
+	 */
 	private Boolean supportsDataHidingFilter;
+	/**
+	 * The Supports grouping.
+	 */
 	private BooleanWithURLType supportsGrouping;
+	/**
+	 * The Supports history.
+	 */
 	private BooleanWithURLType supportsHistory;
+	/**
+	 * The Supports lock.
+	 */
 	private BooleanWithURLType supportsLock;
+	/**
+	 * The Supports mailing.
+	 */
 	private BooleanWithURLType supportsMailing;
+	/**
+	 * The Supports storage.
+	 */
 	private BooleanWithURLType supportsStorage;
+	/**
+	 * The Supports subtypes.
+	 */
 	private SupportSubtypeInfo supportsSubtypes;
+	/**
+	 * The Supports multi value.
+	 */
 	private Boolean supportsMultiValue;
+	/**
+	 * The Supports vc.
+	 */
 	private BooleanWithURLType supportsVC;
+	/**
+	 * The Supports workflow.
+	 */
 	private Boolean supportsWorkflow;
+	/**
+	 * The Table.
+	 */
 	private String table;
+	/**
+	 * The Second level resources.
+	 */
 	private Collection<IsSecondLevelResourceElement> secondLevelResources;
+	/**
+	 * The Supports copying.
+	 */
 	private BooleanWithURLType supportsCopying;
 
+	/**
+	 * Gets base url.
+	 *
+	 * @return the base url
+	 */
 	@XmlAttribute(name = "baseUrl", required = true)
 	public final String getBaseUrl() {
 		return baseUrl;
 	}
 
+	/**
+	 * Sets base url.
+	 *
+	 * @param baseUrl the base url
+	 */
 	public final void setBaseUrl(final String baseUrl) {
 		this.baseUrl = baseUrl;
 	}
 
+	/**
+	 * Gets collection name.
+	 *
+	 * @return the collection name
+	 */
 	@XmlAttribute(name = "collectionName", required = true)
 	public final String getCollectionName() {
 		return collectionName;
 	}
 
+	/**
+	 * Sets collection name.
+	 *
+	 * @param collectionName the collection name
+	 */
 	public final void setCollectionName(final String collectionName) {
 		this.collectionName = collectionName;
 	}
 
+	/**
+	 * Gets attributes.
+	 *
+	 * @return the attributes
+	 */
 	@XmlElementWrapper(name = "Attributes")
 	@XmlElement(name = "Attribute")
 	public Collection<AttributeElement> getAttributes() {
@@ -102,7 +196,12 @@ public final class EntityDescriptor {
 		return attributes;
 	}
 
-	//	@XmlElementWrapper(name = "SecondLevelResources", required = false)
+	/**
+	 * Gets second level resources.
+	 *
+	 * @return the second level resources
+	 */
+//	@XmlElementWrapper(name = "SecondLevelResources", required = false)
 	@XmlElementWrapper(name = "SecondLevelResources")
 	@XmlElement(name = "IsSecondLevelResource")
 	public Collection<IsSecondLevelResourceElement> getSecondLevelResources() {
@@ -113,271 +212,566 @@ public final class EntityDescriptor {
 		return secondLevelResources;
 	}
 
+	/**
+	 * Gets extension name.
+	 *
+	 * @return the extension name
+	 */
 	@XmlElement(name = "ExtensionName")
 	public String getExtensionName() {
 		return extensionName;
 	}
 
+	/**
+	 * Sets extension name.
+	 *
+	 * @param extensionName the extension name
+	 */
 	public void setExtensionName(String extensionName) {
 		this.extensionName = extensionName;
 	}
 
+	/**
+	 * Is first level resource is first level resource element.
+	 *
+	 * @return the is first level resource element
+	 */
 	@XmlElement(name = "IsFirstLevelResource")
 	public IsFirstLevelResourceElement isFirstLevelResource() {
 		return isFirstLevelResource;
 	}
 
+	/**
+	 * Sets first level resource.
+	 *
+	 * @param firstLevelResource the first level resource
+	 */
 	public void setFirstLevelResource(IsFirstLevelResourceElement firstLevelResource) {
 		isFirstLevelResource = firstLevelResource;
 	}
 
+	/**
+	 * Gets label.
+	 *
+	 * @return the label
+	 */
 	@XmlElement(name = "Label")
 	public String getLabel() {
 		return label;
 	}
 
+	/**
+	 * Sets label.
+	 *
+	 * @param label the label
+	 */
 	public void setLabel(String label) {
 		this.label = label;
 	}
 
+	/**
+	 * Gets name.
+	 *
+	 * @return the name
+	 */
 	@XmlElement(name = "Name")
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * Sets name.
+	 *
+	 * @param name the name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * Gets site entity.
+	 *
+	 * @return the site entity
+	 */
 	@XmlElement(name = "IsSiteEntity")
 	public Boolean getSiteEntity() {
 		return isSiteEntity;
 	}
 
+	/**
+	 * Sets site entity.
+	 *
+	 * @param siteEntity the site entity
+	 */
 	public void setSiteEntity(Boolean siteEntity) {
 		isSiteEntity = siteEntity;
 	}
 
+	/**
+	 * Gets supports attachment.
+	 *
+	 * @return the supports attachment
+	 */
 	@XmlElement(name = "SupportsAttachment")
 	public BooleanWithURLType getSupportsAttachment() {
 		return supportsAttachment;
 	}
 
+	/**
+	 * Sets supports attachment.
+	 *
+	 * @param supportsAttachment the supports attachment
+	 */
 	public void setSupportsAttachment(BooleanWithURLType supportsAttachment) {
 		this.supportsAttachment = supportsAttachment;
 	}
 
+	/**
+	 * Gets supports data hiding filter.
+	 *
+	 * @return the supports data hiding filter
+	 */
 	@XmlElement(name = "SupportsDataHidingFilter")
 	public Boolean getSupportsDataHidingFilter() {
 		return supportsDataHidingFilter;
 	}
 
+	/**
+	 * Sets supports data hiding filter.
+	 *
+	 * @param supportsDataHidingFilter the supports data hiding filter
+	 */
 	public void setSupportsDataHidingFilter(Boolean supportsDataHidingFilter) {
 		this.supportsDataHidingFilter = supportsDataHidingFilter;
 	}
 
+	/**
+	 * Gets supports grouping.
+	 *
+	 * @return the supports grouping
+	 */
 	@XmlElement(name = "SupportsGrouping")
 	public BooleanWithURLType getSupportsGrouping() {
 		return supportsGrouping;
 	}
 
+	/**
+	 * Sets supports grouping.
+	 *
+	 * @param supportsGrouping the supports grouping
+	 */
 	public void setSupportsGrouping(BooleanWithURLType supportsGrouping) {
 		this.supportsGrouping = supportsGrouping;
 	}
 
+	/**
+	 * Gets supports history.
+	 *
+	 * @return the supports history
+	 */
 	@XmlElement(name = "SupportsHistory")
 	public BooleanWithURLType getSupportsHistory() {
 		return supportsHistory;
 	}
 
+	/**
+	 * Sets supports history.
+	 *
+	 * @param supportsHistory the supports history
+	 */
 	public void setSupportsHistory(BooleanWithURLType supportsHistory) {
 		this.supportsHistory = supportsHistory;
 	}
 
+	/**
+	 * Gets supports lock.
+	 *
+	 * @return the supports lock
+	 */
 	@XmlElement(name = "SupportsLock")
 	public BooleanWithURLType getSupportsLock() {
 		return supportsLock;
 	}
 
+	/**
+	 * Sets supports lock.
+	 *
+	 * @param supportsLock the supports lock
+	 */
 	public void setSupportsLock(BooleanWithURLType supportsLock) {
 		this.supportsLock = supportsLock;
 	}
 
+	/**
+	 * Gets supports mailing.
+	 *
+	 * @return the supports mailing
+	 */
 	@XmlElement(name = "SupportsMailing")
 	public BooleanWithURLType getSupportsMailing() {
 		return supportsMailing;
 	}
 
+	/**
+	 * Gets supports storage.
+	 *
+	 * @return the supports storage
+	 */
 	@XmlElement(name = "SupportsStorage")
 	public BooleanWithURLType getSupportsStorage() {
 		return supportsStorage;
 	}
 
+	/**
+	 * Sets supports mailing.
+	 *
+	 * @param supportsMailing the supports mailing
+	 */
 	public void setSupportsMailing(BooleanWithURLType supportsMailing) {
 		this.supportsMailing = supportsMailing;
 	}
 
+	/**
+	 * Sets supports storage.
+	 *
+	 * @param supportsStorage the supports storage
+	 */
 	public void setSupportsStorage(BooleanWithURLType supportsStorage) {
 		this.supportsStorage = supportsStorage;
 	}
 
+	/**
+	 * Gets supports multi value.
+	 *
+	 * @return the supports multi value
+	 */
 	@XmlElement(name = "SupportsMultiValue")
 	public Boolean getSupportsMultiValue() {
 		return supportsMultiValue;
 	}
 
+	/**
+	 * Sets supports multi value.
+	 *
+	 * @param supportsMultiValue the supports multi value
+	 */
 	public void setSupportsMultiValue(Boolean supportsMultiValue) {
 		this.supportsMultiValue = supportsMultiValue;
 	}
 
+	/**
+	 * Gets supports subtypes.
+	 *
+	 * @return the supports subtypes
+	 */
 	@XmlElement(name = "SupportsSubtypes")
 	public SupportSubtypeInfo getSupportsSubtypes() {
 		return supportsSubtypes;
 	}
 
+	/**
+	 * Sets supports subtypes.
+	 *
+	 * @param supportsSubtypes the supports subtypes
+	 */
 	public void setSupportsSubtypes(SupportSubtypeInfo supportsSubtypes) {
 		this.supportsSubtypes = supportsSubtypes;
 	}
 
+	/**
+	 * Gets supports vc.
+	 *
+	 * @return the supports vc
+	 */
 	@XmlElement(name = "SupportsVC")
 	public BooleanWithURLType getSupportsVC() {
 		return supportsVC;
 	}
 
+	/**
+	 * Sets supports vc.
+	 *
+	 * @param supportsVC the supports vc
+	 */
 	public void setSupportsVC(BooleanWithURLType supportsVC) {
 		this.supportsVC = supportsVC;
 	}
 
+	/**
+	 * Gets supports workflow.
+	 *
+	 * @return the supports workflow
+	 */
 	@XmlElement(name = "SupportsWorkflow")
 	public Boolean getSupportsWorkflow() {
 		return supportsWorkflow;
 	}
 
+	/**
+	 * Sets supports workflow.
+	 *
+	 * @param supportsWorkflow the supports workflow
+	 */
 	public void setSupportsWorkflow(Boolean supportsWorkflow) {
 		this.supportsWorkflow = supportsWorkflow;
 	}
 
+	/**
+	 * Gets table.
+	 *
+	 * @return the table
+	 */
 	@XmlElement(name = "Table")
 	public String getTable() {
 		return table;
 	}
 
+	/**
+	 * Sets table.
+	 *
+	 * @param table the table
+	 */
 	public void setTable(String table) {
 		this.table = table;
 	}
 
+	/**
+	 * Gets supports copying.
+	 *
+	 * @return the supports copying
+	 */
 	@XmlElement(name = "SupportsCopying")
 	public BooleanWithURLType getSupportsCopying() {
 		return supportsCopying;
 	}
 
+	/**
+	 * Sets supports copying.
+	 *
+	 * @param supportsCopying the supports copying
+	 */
 	public void setSupportsCopying(BooleanWithURLType supportsCopying) {
 		this.supportsCopying = supportsCopying;
 	}
 
+	/**
+	 * The type Boolean with url type.
+	 */
 	@XmlRootElement
 	public static class BooleanWithURLType {
 
+		/**
+		 * The Url.
+		 */
 		private String url;
+		/**
+		 * The Value.
+		 */
 		private Boolean value;
 
+		/**
+		 * Gets url.
+		 *
+		 * @return the url
+		 */
 		@XmlAttribute(name = "url", required = true)
 		public String getUrl() {
 			return url;
 		}
 
+		/**
+		 * Sets url.
+		 *
+		 * @param url the url
+		 */
 		public void setUrl(String url) {
 			this.url = url;
 		}
 
+		/**
+		 * Gets value.
+		 *
+		 * @return the value
+		 */
 		@XmlValue
 		public Boolean getValue() {
 			return value;
 		}
 
+		/**
+		 * Sets value.
+		 *
+		 * @param value the value
+		 */
 		public void setValue(Boolean value) {
 			this.value = value;
 		}
 	}
 
+	/**
+	 * The type Is first level resource element.
+	 */
 	@XmlRootElement(name = "IsFirstLevelResource")
 	@XmlAccessorType(XmlAccessType.FIELD)
 	public static class IsFirstLevelResourceElement extends BooleanWithURLType {
 
+		/**
+		 * The Supports post.
+		 */
 		@XmlAttribute(name = "supportsPOST")
 		protected boolean supportsPOST;
 
+		/**
+		 * The Supports get.
+		 */
 		@XmlAttribute(name = "supportsGET")
 		protected boolean supportsGET;
 
+		/**
+		 * The Supports put.
+		 */
 		@XmlAttribute(name = "supportsPUT")
 		protected boolean supportsPUT;
 
+		/**
+		 * The Supports delete.
+		 */
 		@XmlAttribute(name = "supportsDELETE")
 		protected boolean supportsDELETE;
 
+		/**
+		 * Is supports post boolean.
+		 *
+		 * @return the boolean
+		 */
 		public boolean isSupportsPOST() {
 			return supportsPOST;
 		}
 
+		/**
+		 * Is supports get boolean.
+		 *
+		 * @return the boolean
+		 */
 		public boolean isSupportsGET() {
 			return supportsGET;
 		}
 
+		/**
+		 * Is supports put boolean.
+		 *
+		 * @return the boolean
+		 */
 		public boolean isSupportsPUT() {
 			return supportsPUT;
 		}
 
+		/**
+		 * Is supports delete boolean.
+		 *
+		 * @return the boolean
+		 */
 		public boolean isSupportsDELETE() {
 			return supportsDELETE;
 		}
 	}
 
+	/**
+	 * The type Attribute element.
+	 */
 	@XmlRootElement(name = "Attribute")
 	@XmlType
 	public static final class AttributeElement {
 
+		/**
+		 * The Name.
+		 */
 		private String name;
+		/**
+		 * The Value.
+		 */
 		private String value;
 
+		/**
+		 * Gets name.
+		 *
+		 * @return the name
+		 */
 		@XmlAttribute(name = "name")
 		public String getName() {
 			return name;
 		}
 
+		/**
+		 * Sets name.
+		 *
+		 * @param name the name
+		 */
 		public void setName(String name) {
 			this.name = name;
 		}
 
+		/**
+		 * Gets value.
+		 *
+		 * @return the value
+		 */
 		@XmlValue
 		public String getValue() {
 			return value;
 		}
 
+		/**
+		 * Sets value.
+		 *
+		 * @param value the value
+		 */
 		public void setValue(String value) {
 			this.value = value;
 		}
 	}
 
+	/**
+	 * The type Is second level resource element.
+	 */
 	@XmlRootElement(name = "IsSecondLevelResource")
 	@XmlAccessorType(XmlAccessType.FIELD)
 	public static final class IsSecondLevelResourceElement extends IsFirstLevelResourceElement {
 
+		/**
+		 * The Parent entity.
+		 */
 		@XmlAttribute(name = "parentEntity", required = true)
 		private String parentEntity;
 
+		/**
+		 * Gets parent entity.
+		 *
+		 * @return the parent entity
+		 */
 		public String getParentEntity() {
 			return parentEntity;
 		}
 	}
 
+	/**
+	 * The type Support subtype info.
+	 */
 	@XmlRootElement
 	@XmlAccessorType(XmlAccessType.FIELD)
 	public static class SupportSubtypeInfo extends BooleanWithURLType {
 
+		/**
+		 * The Sub type field name.
+		 */
 		@XmlAttribute(name = "subTypeFieldName")
 		protected String subTypeFieldName;
 
+		/**
+		 * Gets sub type field name.
+		 *
+		 * @return the sub type field name
+		 */
 		public String getSubTypeFieldName() {
 			return subTypeFieldName;
 		}

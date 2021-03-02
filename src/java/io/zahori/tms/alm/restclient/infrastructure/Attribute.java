@@ -31,63 +31,55 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.XmlValue;
 
 /**
- * Java class for anonymous complex type.
- *
- * The following schema fragment specifies the expected content contained within
- * this class.
- *
- * <complexType> <simpleContent>
- * <extension base="<http://www.w3.org/2001/XMLSchema> string">
- * <attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" />
- * </extension> </simpleContent> </complexType>
- *
+ * The type Attribute.
  */
-
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = { "value" })
 @XmlRootElement(name = "Attribute")
 public class Attribute {
 
+    /**
+     * The Value.
+     */
     @XmlValue
     protected String value;
+    /**
+     * The Name.
+     */
     @XmlAttribute
     protected String name;
 
     /**
-     * Gets the value of the value property.
+     * Gets value.
      *
-     * @return possible object is {@link String }
-     *
+     * @return the value
      */
     public String getValue() {
         return value;
     }
 
     /**
-     * Sets the value of the value property.
+     * Sets value.
      *
-     * @param value allowed object is {@link String }
-     *
+     * @param value the value
      */
     public void setValue(String value) {
         this.value = value;
     }
 
     /**
-     * Gets the value of the name property.
+     * Gets name.
      *
-     * @return possible object is {@link String }
-     *
+     * @return the name
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Sets the value of the name property.
+     * Sets name.
      *
-     * @param value allowed object is {@link String }
-     *
+     * @param value the value
      */
     public void setName(String value) {
         this.name = value;

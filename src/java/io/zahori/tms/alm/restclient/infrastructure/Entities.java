@@ -33,16 +33,32 @@ import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * The type Entities.
+ *
+ * @param <T> the type parameter
+ */
 @XmlRootElement(name = "Entities")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Entities<T extends Entity> {
+	/**
+	 * The Entities.
+	 */
 	@XmlElementRefs({ @XmlElementRef(name = "Entity"), @XmlElementRef(name = "Entity") })
 	private List<T> entities;
 
+	/**
+	 * Instantiates a new Entities.
+	 */
 	public Entities() {
 		this(new ArrayList<T>());
 	}
 
+	/**
+	 * Instantiates a new Entities.
+	 *
+	 * @param entities the entities
+	 */
 	public Entities(Collection<T> entities) {
 		if (entities instanceof List) {
 			this.entities = (List<T>) entities;
@@ -51,19 +67,39 @@ public class Entities<T extends Entity> {
 		}
 	}
 
+	/**
+	 * To string string.
+	 *
+	 * @return the string
+	 */
 	@Override
 	public String toString() {
 		return "Entities: " + entities;
 	}
 
+	/**
+	 * Entities list.
+	 *
+	 * @return the list
+	 */
 	public List<T> entities() {
 		return entities;
 	}
 
+	/**
+	 * Entities.
+	 *
+	 * @param entities the entities
+	 */
 	public void entities(List<T> entities) {
 		this.entities = entities;
 	}
 
+	/**
+	 * Add entity.
+	 *
+	 * @param entity the entity
+	 */
 	public void addEntity(T entity) {
 		entities.add(entity);
 	}

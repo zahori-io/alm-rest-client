@@ -32,22 +32,24 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 /**
- * A utility class for converting between jaxb annotated objects and xml.
+ * The type Entity marshalling utils.
  */
 public class EntityMarshallingUtils {
 
+	/**
+	 * Instantiates a new Entity marshalling utils.
+	 */
 	private EntityMarshallingUtils() {
 	}
 
 	/**
-	 * @param <T>
-	 *            the type we want to convert our xml into
-	 * @param c
-	 *            the class of the parameterized type
-	 * @param xml
-	 *            the instance xml description
-	 * @return a deserialization of the xml into an object of type T of class Class<T>
-	 * @throws javax.xml.bind.JAXBException
+	 * Marshal t.
+	 *
+	 * @param <T> the type parameter
+	 * @param c   the c
+	 * @param xml the xml
+	 * @return the t
+	 * @throws JAXBException the jaxb exception
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T> T marshal(Class<T> c, String xml) throws JAXBException {
@@ -67,14 +69,12 @@ public class EntityMarshallingUtils {
 	}
 
 	/**
-	 * @param <T>
-	 *            the type to serialize
-	 * @param c
-	 *            the class of the type to serialize
-	 * @param o
-	 *            the instance containing the data to serialize
-	 * @return a string representation of the data.
-	 * @throws Exception
+	 * Unmarshal string.
+	 *
+	 * @param <T> the type parameter
+	 * @param c   the c
+	 * @param o   the o
+	 * @return the string
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T> String unmarshal(Class<T> c, Object o) {

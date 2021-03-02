@@ -24,28 +24,50 @@ package io.zahori.tms.alm.restclient.infrastructure;
  */
 
 /**
- *
- * These constants are used throughout the code to set the server to work with.
- * To execute this code, change these settings to fit those of your server.
+ * The type Constants.
  */
 public class Constants {
+	/**
+	 * Instantiates a new Constants.
+	 */
 	private Constants() {
 	}
 
+	/**
+	 * The constant HOST.
+	 */
 	public static final String HOST = "alm1.produban.gs.corp";
+	/**
+	 * The constant PORT.
+	 */
 	public static final String PORT = "80";
 
+	/**
+	 * The constant USERNAME.
+	 */
 	public static final String USERNAME = "XI320654";
+	/**
+	 * The constant PASSWORD.
+	 */
 	public static final String PASSWORD = "Asturias10";
 
+	/**
+	 * The constant DOMAIN.
+	 */
 	public static final String DOMAIN = "SW_COMPONENTS";
+	/**
+	 * The constant PROJECT.
+	 */
 	public static final String PROJECT = "QTP_DESARROLLO";
 
 	/**
-	 * Supports running tests correctly on both versioned and non-versioned
-	 * projects.
-	 * 
-	 * @return true if entities of entityType support versioning
+	 * Is versioned boolean.
+	 *
+	 * @param entityType the entity type
+	 * @param domain     the domain
+	 * @param project    the project
+	 * @return the boolean
+	 * @throws Exception the exception
 	 */
 	public static boolean isVersioned(String entityType, final String domain, final String project) throws Exception {
 
@@ -61,23 +83,45 @@ public class Constants {
 		return isVersioned;
 	}
 
+	/**
+	 * Generate field xml string.
+	 *
+	 * @param field the field
+	 * @param value the value
+	 * @return the string
+	 */
 	public static String generateFieldXml(String field, String value) {
 		return "<Field Name=\"" + field + "\"><Value>" + value + "</Value></Field>";
 	}
 
 	/**
-	 * This string used to create new "requirement" type entities.
+	 * The constant entityToPostName.
 	 */
 	public static final String entityToPostName = "req" + Double.toHexString(Math.random());
+	/**
+	 * The constant entityToPostFieldName.
+	 */
 	public static final String entityToPostFieldName = "type-id";
+	/**
+	 * The constant entityToPostFieldValue.
+	 */
 	public static final String entityToPostFieldValue = "1";
+	/**
+	 * The constant entityToPostFormat.
+	 */
 	public static final String entityToPostFormat = "<Entity Type=\"requirement\">" + "<Fields>"
 			+ Constants.generateFieldXml("%s", "%s") + Constants.generateFieldXml("%s", "%s") + "</Fields>"
 			+ "</Entity>";
 
+	/**
+	 * The constant entityToPostXml.
+	 */
 	public static final String entityToPostXml = String.format(entityToPostFormat, "name", entityToPostName,
 			entityToPostFieldName, entityToPostFieldValue);
 
+	/**
+	 * The constant entityToPostFieldXml.
+	 */
 	public static final CharSequence entityToPostFieldXml = generateFieldXml(Constants.entityToPostFieldName,
 			Constants.entityToPostFieldValue);
 
