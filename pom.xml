@@ -7,6 +7,9 @@
 
 	<name>alm-rest-client</name>
 
+	<description>Integration with the ALM test repository at Zahori.io</description>
+	<url>https://zahori.io</url>
+
 	<organization>
 		<name>PANEL SISTEMAS INFORMATICOS,S.L</name>
 		<url>www.panel.es</url>
