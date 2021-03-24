@@ -34,33 +34,6 @@ public class Constants {
 	}
 
 	/**
-	 * The constant HOST.
-	 */
-	public static final String HOST = "alm1.produban.gs.corp";
-	/**
-	 * The constant PORT.
-	 */
-	public static final String PORT = "80";
-
-	/**
-	 * The constant USERNAME.
-	 */
-	public static final String USERNAME = "XI320654";
-	/**
-	 * The constant PASSWORD.
-	 */
-	public static final String PASSWORD = "Asturias10";
-
-	/**
-	 * The constant DOMAIN.
-	 */
-	public static final String DOMAIN = "SW_COMPONENTS";
-	/**
-	 * The constant PROJECT.
-	 */
-	public static final String PROJECT = "QTP_DESARROLLO";
-
-	/**
 	 * Is versioned boolean.
 	 *
 	 * @param entityType the entity type
