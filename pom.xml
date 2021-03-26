@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.zahori.tms</groupId>
 	<artifactId>alm-rest-client</artifactId>
-	<version>0.1.3</version>
+	<version>0.1.4-SNAPSHOT</version>
 
 	<name>alm-rest-client</name>
 
@@ -48,7 +48,7 @@
 		<connection>scm:git:git://github.com/zahori-io/${project.artifactId}.git</connection>
 		<developerConnection>scm:git:git@github.com:zahori-io/${project.artifactId}.git</developerConnection>
 		<url>https://github.com/zahori-io/${project.artifactId}.git</url>
-		<tag>v0.1.3</tag>
+		<tag>v0.1.0</tag>
 	</scm>
 
 	<distributionManagement>
