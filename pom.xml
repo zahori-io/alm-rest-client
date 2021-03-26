@@ -135,7 +135,6 @@
 				<configuration>
 					<autoVersionSubmodules>true</autoVersionSubmodules>
 					<tagNameFormat>v@{project.version}</tagNameFormat>
-					<!-- <useReleaseProfile>false</useReleaseProfile> -->
 					<releaseProfiles>release</releaseProfiles>
 					<goals>deploy</goals>
 				</configuration>
@@ -168,19 +167,6 @@
 							</descriptorRefs>
 						</configuration>
 					</plugin>
-					<!--
-					<plugin>
-						<groupId>com.jolira</groupId>
-						<artifactId>onejar-maven-plugin</artifactId>
-						<version>1.4.4</version>
-						<executions>
-							<execution>
-								<goals>
-									<goal>one-jar</goal>
-								</goals>
-							</execution>
-						</executions>
-				</plugin>-->
 				</plugins>
 			</build>
 		</profile>
